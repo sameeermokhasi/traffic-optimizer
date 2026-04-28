@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt --quiet'
+                bat 'python -m pip install -r requirements.txt --quiet'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'python -m pytest tests/ -v --tb=short 2>&1 || echo No tests directory found - skipping'
+                bat 'python -m pytest tests/ -v --tb=short 2>&1 || echo No tests directory - skipping'
             }
         }
 
