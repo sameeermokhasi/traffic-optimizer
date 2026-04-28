@@ -1,0 +1,39 @@
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0e1a;
+  --surface: #111827;
+  --surface2: #1a2235;
+}
+
+body {
+  background-color: var(--bg);
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 2px; }
+
+/* Signal light pulse animation */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 8px #22c55e, 0 0 20px #22c55e55; }
+  50%       { box-shadow: 0 0 16px #22c55e, 0 0 40px #22c55e99; }
+}
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 8px #ef4444, 0 0 20px #ef444455; }
+  50%       { box-shadow: 0 0 16px #ef4444, 0 0 40px #ef444499; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.signal-green { animation: pulse-green 1.5s ease-in-out infinite; }
+.signal-red   { animation: pulse-red 2s ease-in-out infinite; }
+.fade-in      { animation: fadeIn 0.4s ease forwards; }
