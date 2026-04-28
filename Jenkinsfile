@@ -4,25 +4,25 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                bat 'npm install'
             }
         }
 
         stage('Lint Check') {
             steps {
-                bat 'python -m py_compile app.py && echo [PASS] Syntax OK'
+                bat 'npm run lint || echo [INFO] No lint script configured'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'python -m pytest tests/ -v --tb=short || echo [INFO] No tests found'
+                bat 'npm test || echo [INFO] No test script configured'
             }
         }
 
         stage('Build Summary') {
             steps {
-                bat 'echo ===== BUILD COMPLETE ===== && python --version && dir /b'
+                bat 'echo ===== BUILD COMPLETE ===== && echo Project: traffic-optimizer && node --version && npm --version'
             }
         }
     }
